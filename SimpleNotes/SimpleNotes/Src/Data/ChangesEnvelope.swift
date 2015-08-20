@@ -7,56 +7,36 @@ import Foundation
 
 struct ChangesEnvelope {
 
-    let notebooksToCreate: [Notebook]
-    let notebooksToDelete: [Notebook]
-    let notebooksToUpdate: [Notebook]
-    let notesToCreate: [Note]
-    let notesToDelete: [Note]
-    let notesToUpdate: [Note]
+    let notebooksChanges: Changes<Notebook>
+    let notesChanges: Changes<Note>
 
-    init(notebooksToCreate: [Notebook], notebooksToDelete: [Notebook], notebooksToUpdate: [Notebook], notesToCreate: [Note], notesToDelete: [Note], notesToUpdate: [Note]) {
-        self.notebooksToCreate = notebooksToCreate
-        self.notebooksToDelete = notebooksToDelete
-        self.notebooksToUpdate = notebooksToUpdate
-        self.notesToCreate = notesToCreate
-        self.notesToDelete = notesToDelete
-        self.notesToUpdate = notesToUpdate
+    init(notebooksChanges: Changes<Notebook>, notesChanges: Changes<Note>) {
+        self.notebooksChanges = notebooksChanges
+        self.notesChanges = notesChanges
     }
 
     func printDescription() {
         println("ChangesEnvelope:")
-        print("\tnotebooksToCreate: ")
-        for i in notebooksToCreate {
-            print("'\(i.name)'")
-        }
-        println()
-
         print("\tnotebooksToDelete: ")
-        for i in notebooksToDelete {
+        for i in notebooksChanges.toDelete.values.array {
             print("'\(i.name)'")
         }
         println()
 
-        print("\tnotebooksToUpdate: ")
-        for i in notebooksToUpdate {
+        print("\tnotebooksToSave: ")
+        for i in notebooksChanges.toSave.values.array {
             print("'\(i.name)'")
-        }
-        println()
-
-        print("\tnotesToCreate: ")
-        for i in notesToCreate {
-            print("'\(i.text)'")
         }
         println()
 
         print("\tnotesToDelete: ")
-        for i in notesToDelete {
+        for i in notesChanges.toDelete.values.array {
             print("'\(i.text)'")
         }
         println()
 
-        print("\tnotesToUpdate: ")
-        for i in notesToUpdate {
+        print("\tnotesToSave: ")
+        for i in notesChanges.toSave.values.array {
             print("'\(i.text)'")
         }
         println()

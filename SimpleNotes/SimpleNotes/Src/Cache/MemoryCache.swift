@@ -11,13 +11,13 @@ class MemoryCache: Cache {
 
     private var notebooksByIdentifier = [String: Notebook]()
     private var notesByIdentifier = [String: Note]()
-    private var notebooksToCreate = [String: Notebook]()
-    private var notebooksToDelete = [String: Notebook]()
-    private var notebooksToUpdate = [String: Notebook]()
-    private var notesToCreate = [String: Note]()
-    private var notesToDelete = [String: Note]()
-    private var notesToUpdate = [String: Note]()
+    private var notebooksChanges = Changes<Notebook>()
+    private var notesChanges = Changes<Note>()
     private var privateDelegate: CacheDelegate?
+
+    private func changed() {
+        delegate?.cacheChanged(self)
+    }
 
     // MARK: - Cache
 
@@ -32,16 +32,21 @@ class MemoryCache: Cache {
 
     func createNotebook(notebook: Notebook) -> Bool {
         notebooksByIdentifier[notebook.identifier] = notebook
-        notebooksToCreate[notebook.identifier] = notebook
-        delegate?.cacheChanged(self)
+        notebooksChanges.toSave[notebook.identifier] = notebook
+        changed()
         return true
     }
 
     func deleteNotebook(notebook: Notebook) -> Bool {
         if let _ = notebooksByIdentifier[notebook.identifier] {
             notebooksByIdentifier[notebook.identifier] = nil
-            notebooksToDelete[notebook.identifier] = notebook
-            delegate?.cacheChanged(self)
+            notebooksChanges.toDelete[notebook.identifier] = notebook
+            for note in notes {
+                if note.notebookIdentifier == notebook.identifier {
+                    notesChanges.toSave[note.identifier] = note
+                }
+            }
+            changed()
             return true
         }
         return false
@@ -50,8 +55,8 @@ class MemoryCache: Cache {
     func updateNotebook(notebook: Notebook) -> Bool {
         if let _ = notebooksByIdentifier[notebook.identifier] {
             notebooksByIdentifier[notebook.identifier] = notebook
-            notebooksToUpdate[notebook.identifier] = notebook
-            delegate?.cacheChanged(self)
+            notebooksChanges.toSave[notebook.identifier] = notebook
+            changed()
             return true
         }
         return false
@@ -66,35 +71,31 @@ class MemoryCache: Cache {
             for notebook in newValue {
                 newNotebooksByIdentifier[notebook.identifier] = notebook
             }
-            for notebook in notebooksToCreate.values.array {
+            for (_, notebook) in notebooksChanges.toSave {
                 newNotebooksByIdentifier[notebook.identifier] = notebook
             }
-            for notebook in notebooksToDelete.values.array {
+            for (_, notebook) in notebooksChanges.toDelete {
                 if let _ = notebooksByIdentifier[notebook.identifier] {
                     newNotebooksByIdentifier[notebook.identifier] = nil
                 }
             }
-            for notebook in notebooksToUpdate.values.array {
-                if let _ = notebooksByIdentifier[notebook.identifier] {
-                    newNotebooksByIdentifier[notebook.identifier] = notebook
-                }
-            }
             notebooksByIdentifier = newNotebooksByIdentifier
+            changed()
         }
     }
 
     func createNote(note: Note) -> Bool {
         notesByIdentifier[note.identifier] = note
-        notesToCreate[note.identifier] = note
-        delegate?.cacheChanged(self)
+        notesChanges.toSave[note.identifier] = note
+        changed()
         return true
     }
 
     func deleteNote(note: Note) -> Bool {
         if let existingNote = notesByIdentifier[note.identifier] {
             notesByIdentifier[note.identifier] = nil
-            notesToDelete[note.identifier] = note
-            delegate?.cacheChanged(self)
+            notesChanges.toDelete[note.identifier] = note
+            changed()
             return true
         }
         return false
@@ -103,8 +104,8 @@ class MemoryCache: Cache {
     func updateNote(note: Note) -> Bool {
         if let existingNote = notesByIdentifier[note.identifier] {
             notesByIdentifier[note.identifier] = note
-            notesToUpdate[note.identifier] = note
-            delegate?.cacheChanged(self)
+            notesChanges.toSave[note.identifier] = note
+            changed()
             return true
         }
         return false
@@ -119,79 +120,51 @@ class MemoryCache: Cache {
             for note in newValue {
                 newNotesByIdentifier[note.identifier] = note
             }
-            for note in notesToCreate.values.array {
+            for (_, note) in notesChanges.toSave {
                 newNotesByIdentifier[note.identifier] = note
             }
-            for note in notesToDelete.values.array {
+            for (_, note) in notesChanges.toDelete {
                 if let _ = notesByIdentifier[note.identifier] {
                     newNotesByIdentifier[note.identifier] = nil
                 }
             }
-            for note in notesToUpdate.values.array {
-                if let _ = notesByIdentifier[note.identifier] {
-                    newNotesByIdentifier[note.identifier] = note
-                }
-            }
             notesByIdentifier = newNotesByIdentifier
+            changed()
         }
     }
 
     var hasChanges: Bool {
-        return notebooksToCreate.count > 0 ||
-                notebooksToDelete.count > 0 ||
-                notebooksToUpdate.count > 0 ||
-                notesToCreate.count > 0 ||
-                notesToDelete.count > 0 ||
-                notesToUpdate.count > 0
+        return notebooksChanges.hasChanges || notesChanges.hasChanges
     }
 
     var changes: ChangesEnvelope {
-        let changes = ChangesEnvelope(notebooksToCreate: notebooksToCreate.values.array,
-                notebooksToDelete: notebooksToDelete.values.array,
-                notebooksToUpdate: notebooksToUpdate.values.array,
-                notesToCreate: notesToCreate.values.array,
-                notesToDelete: notesToDelete.values.array,
-                notesToUpdate: notesToUpdate.values.array
-        )
-        return changes
+        return ChangesEnvelope(notebooksChanges: notebooksChanges, notesChanges: notesChanges)
     }
 
     func removeChanges(changes: ChangesEnvelope) {
 
-        for notebook in changes.notebooksToCreate {
-            notebooksToCreate[notebook.identifier] = nil
+        for (_, notebook) in changes.notebooksChanges.toSave {
+            notebooksChanges.toSave[notebook.identifier] = nil
         }
 
-        for notebook in changes.notebooksToDelete {
-            notebooksToDelete[notebook.identifier] = nil
+        for (_, notebook) in changes.notebooksChanges.toDelete {
+            notebooksChanges.toDelete[notebook.identifier] = nil
         }
 
-        for notebook in changes.notebooksToUpdate {
-            notebooksToUpdate[notebook.identifier] = nil
+        for (_, note) in changes.notesChanges.toSave {
+            notesChanges.toSave[note.identifier] = nil
         }
 
-        for note in changes.notesToCreate {
-            notesToCreate[note.identifier] = nil
-        }
-
-        for note in changes.notesToDelete {
-            notesToDelete[note.identifier] = nil
-        }
-
-        for note in changes.notesToUpdate {
-            notesToUpdate[note.identifier] = nil
+        for (_, note) in changes.notesChanges.toDelete {
+            notesChanges.toDelete[note.identifier] = nil
         }
     }
 
     func clear() {
         notebooksByIdentifier = [String: Notebook]()
         notesByIdentifier = [String: Note]()
-        notebooksToCreate = [String: Notebook]()
-        notebooksToDelete = [String: Notebook]()
-        notebooksToUpdate = [String: Notebook]()
-        notesToCreate = [String: Note]()
-        notesToDelete = [String: Note]()
-        notesToUpdate = [String: Note]()
-        delegate?.cacheChanged(self)
+        notebooksChanges = Changes<Notebook>()
+        notesChanges = Changes<Note>()
+        changed()
     }
 }

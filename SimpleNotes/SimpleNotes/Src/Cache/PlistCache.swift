@@ -10,13 +10,9 @@ class PlistCache: Cache {
     // MARK: - PlistCache
 
     private var notebooksByIdentifier = [String: Notebook]()
-    private var notebooksToCreate = [String: Notebook]()
-    private var notebooksToDelete = [String: Notebook]()
-    private var notebooksToUpdate = [String: Notebook]()
     private var notesByIdentifier = [String: Note]()
-    private var notesToCreate = [String: Note]()
-    private var notesToDelete = [String: Note]()
-    private var notesToUpdate = [String: Note]()
+    private var notebooksChanges = Changes<Notebook>()
+    private var notesChanges = Changes<Note>()
     private var privateDelegate: CacheDelegate?
 
     private func packNotebook(notebook: Notebook) -> [String:String]? {
@@ -74,29 +70,21 @@ class PlistCache: Cache {
         }
         content["notebooksByIdentifier"] = packedNotebooksByIdentifier
 
-        var packedNotebooksToCreate = [[String: String]]()
-        for (_, value) in notebooksToCreate {
+        var packedNotebooksToSave = [[String: String]]()
+        for (_, value) in notebooksChanges.toSave {
             if let packed = packNotebook(value) {
-                packedNotebooksToCreate.append(packed)
+                packedNotebooksToSave.append(packed)
             }
         }
-        content["notebooksToCreate"] = packedNotebooksToCreate
+        content["notebooksToSave"] = packedNotebooksToSave
 
         var packedNotebooksToDelete = [[String: String]]()
-        for (_, value) in notebooksToDelete {
+        for (_, value) in notebooksChanges.toDelete {
             if let packed = packNotebook(value) {
                 packedNotebooksToDelete.append(packed)
             }
         }
         content["notebooksToDelete"] = packedNotebooksToDelete
-
-        var packedNotebooksToUpdate = [[String: String]]()
-        for (_, value) in notebooksToUpdate {
-            if let packed = packNotebook(value) {
-                packedNotebooksToUpdate.append(packed)
-            }
-        }
-        content["notebooksToUpdate"] = packedNotebooksToUpdate
 
         var packedNotesByIdentifier = [[String: String]]()
         for (_, value) in notesByIdentifier {
@@ -106,29 +94,21 @@ class PlistCache: Cache {
         }
         content["notesByIdentifier"] = packedNotesByIdentifier
 
-        var packedNotesToCreate = [[String: String]]()
-        for (_, value) in notesToCreate {
+        var packedNotesToSave = [[String: String]]()
+        for (_, value) in notesChanges.toSave {
             if let packed = packNote(value) {
-                packedNotesToCreate.append(packed)
+                packedNotesToSave.append(packed)
             }
         }
-        content["notesToCreate"] = packedNotesToCreate
+        content["notesToSave"] = packedNotesToSave
 
         var packedNotesToDelete = [[String: String]]()
-        for (_, value) in notesToDelete {
+        for (_, value) in notesChanges.toDelete {
             if let packed = packNote(value) {
                 packedNotesToDelete.append(packed)
             }
         }
         content["notesToDelete"] = packedNotesToDelete
-
-        var packedNotesToUpdate = [[String: String]]()
-        for (_, value) in notesToUpdate {
-            if let packed = packNote(value) {
-                packedNotesToUpdate.append(packed)
-            }
-        }
-        content["notesToUpdate"] = packedNotesToUpdate
 
         println("contentFilePath: \(contentFilePath)")
         if !NSDictionary(dictionary: content).writeToFile(contentFilePath, atomically: true) {
@@ -149,15 +129,15 @@ class PlistCache: Cache {
             }
             notebooksByIdentifier = unpackedNotebooksByIdentifier
 
-            var unpackedNotebooksToCreate = [String: Notebook]()
-            if let packedNotebooksToCreate = content["notebooksToCreate"] {
-                for packed in packedNotebooksToCreate {
+            var unpackedNotebooksToSave = [String: Notebook]()
+            if let packedNotebooksToSave = content["notebooksToSave"] {
+                for packed in packedNotebooksToSave {
                     if let unpacked = unpackNotebook(packed) {
-                        unpackedNotebooksToCreate[unpacked.identifier] = unpacked
+                        unpackedNotebooksToSave[unpacked.identifier] = unpacked
                     }
                 }
             }
-            notebooksToCreate = unpackedNotebooksToCreate
+            notebooksChanges.toSave = unpackedNotebooksToSave
 
             var unpackedNotebooksToDelete = [String: Notebook]()
             if let packedNotebooksToDelete = content["notebooksToDelete"] {
@@ -167,17 +147,7 @@ class PlistCache: Cache {
                     }
                 }
             }
-            notebooksToDelete = unpackedNotebooksToDelete
-
-            var unpackedNotebooksToUpdate = [String: Notebook]()
-            if let packedNotebooksToUpdate = content["notebooksToUpdate"] {
-                for packed in packedNotebooksToUpdate {
-                    if let unpacked = unpackNotebook(packed) {
-                        unpackedNotebooksToUpdate[unpacked.identifier] = unpacked
-                    }
-                }
-            }
-            notebooksToUpdate = unpackedNotebooksToUpdate
+            notebooksChanges.toDelete = unpackedNotebooksToDelete
 
             var unpackedNotesByIdentifier = [String: Note]()
             if let packedNotesByIdentifier = content["notesByIdentifier"] {
@@ -189,15 +159,15 @@ class PlistCache: Cache {
             }
             notesByIdentifier = unpackedNotesByIdentifier
 
-            var unpackedNotesToCreate = [String: Note]()
-            if let packedNotesToCreate = content["notesToCreate"] {
-                for packed in packedNotesToCreate {
+            var unpackedNotesToSave = [String: Note]()
+            if let packedNotesToSave = content["notesToSave"] {
+                for packed in packedNotesToSave {
                     if let unpacked = unpackNote(packed) {
-                        unpackedNotesToCreate[unpacked.identifier] = unpacked
+                        unpackedNotesToSave[unpacked.identifier] = unpacked
                     }
                 }
             }
-            notesToCreate = unpackedNotesToCreate
+            notesChanges.toSave = unpackedNotesToSave
 
             var unpackedNotesToDelete = [String: Note]()
             if let packedNotesToDelete = content["notesToDelete"] {
@@ -207,17 +177,7 @@ class PlistCache: Cache {
                     }
                 }
             }
-            notesToDelete = unpackedNotesToDelete
-
-            var unpackedNotesToUpdate = [String: Note]()
-            if let packedNotesToUpdate = content["notesToUpdate"] {
-                for packed in packedNotesToUpdate {
-                    if let unpacked = unpackNote(packed) {
-                        unpackedNotesToUpdate[unpacked.identifier] = unpacked
-                    }
-                }
-            }
-            notesToUpdate = unpackedNotesToUpdate
+            notesChanges.toDelete = unpackedNotesToDelete
         }
     }
 
@@ -243,7 +203,7 @@ class PlistCache: Cache {
 
     func createNotebook(notebook: Notebook) -> Bool {
         notebooksByIdentifier[notebook.identifier] = notebook
-        notebooksToCreate[notebook.identifier] = notebook
+        notebooksChanges.toSave[notebook.identifier] = notebook
         changed()
         return true
     }
@@ -251,10 +211,10 @@ class PlistCache: Cache {
     func deleteNotebook(notebook: Notebook) -> Bool {
         if let _ = notebooksByIdentifier[notebook.identifier] {
             notebooksByIdentifier[notebook.identifier] = nil
-            notebooksToDelete[notebook.identifier] = notebook
+            notebooksChanges.toDelete[notebook.identifier] = notebook
             for note in notes {
                 if note.notebookIdentifier == notebook.identifier {
-                    notesToDelete[note.identifier] = note
+                    notesChanges.toSave[note.identifier] = note
                 }
             }
             changed()
@@ -266,7 +226,7 @@ class PlistCache: Cache {
     func updateNotebook(notebook: Notebook) -> Bool {
         if let _ = notebooksByIdentifier[notebook.identifier] {
             notebooksByIdentifier[notebook.identifier] = notebook
-            notebooksToUpdate[notebook.identifier] = notebook
+            notebooksChanges.toSave[notebook.identifier] = notebook
             changed()
             return true
         }
@@ -282,17 +242,12 @@ class PlistCache: Cache {
             for notebook in newValue {
                 newNotebooksByIdentifier[notebook.identifier] = notebook
             }
-            for notebook in notebooksToCreate.values.array {
+            for (_, notebook) in notebooksChanges.toSave {
                 newNotebooksByIdentifier[notebook.identifier] = notebook
             }
-            for notebook in notebooksToDelete.values.array {
+            for (_, notebook) in notebooksChanges.toDelete {
                 if let _ = notebooksByIdentifier[notebook.identifier] {
                     newNotebooksByIdentifier[notebook.identifier] = nil
-                }
-            }
-            for notebook in notebooksToUpdate.values.array {
-                if let _ = notebooksByIdentifier[notebook.identifier] {
-                    newNotebooksByIdentifier[notebook.identifier] = notebook
                 }
             }
             notebooksByIdentifier = newNotebooksByIdentifier
@@ -302,7 +257,7 @@ class PlistCache: Cache {
 
     func createNote(note: Note) -> Bool {
         notesByIdentifier[note.identifier] = note
-        notesToCreate[note.identifier] = note
+        notesChanges.toSave[note.identifier] = note
         changed()
         return true
     }
@@ -310,7 +265,7 @@ class PlistCache: Cache {
     func deleteNote(note: Note) -> Bool {
         if let existingNote = notesByIdentifier[note.identifier] {
             notesByIdentifier[note.identifier] = nil
-            notesToDelete[note.identifier] = note
+            notesChanges.toDelete[note.identifier] = note
             changed()
             return true
         }
@@ -320,7 +275,7 @@ class PlistCache: Cache {
     func updateNote(note: Note) -> Bool {
         if let existingNote = notesByIdentifier[note.identifier] {
             notesByIdentifier[note.identifier] = note
-            notesToUpdate[note.identifier] = note
+            notesChanges.toSave[note.identifier] = note
             changed()
             return true
         }
@@ -336,17 +291,12 @@ class PlistCache: Cache {
             for note in newValue {
                 newNotesByIdentifier[note.identifier] = note
             }
-            for note in notesToCreate.values.array {
+            for (_, note) in notesChanges.toSave {
                 newNotesByIdentifier[note.identifier] = note
             }
-            for note in notesToDelete.values.array {
+            for (_, note) in notesChanges.toDelete {
                 if let _ = notesByIdentifier[note.identifier] {
                     newNotesByIdentifier[note.identifier] = nil
-                }
-            }
-            for note in notesToUpdate.values.array {
-                if let _ = notesByIdentifier[note.identifier] {
-                    newNotesByIdentifier[note.identifier] = note
                 }
             }
             notesByIdentifier = newNotesByIdentifier
@@ -355,61 +305,37 @@ class PlistCache: Cache {
     }
 
     var hasChanges: Bool {
-        return notebooksToCreate.count > 0 ||
-                notebooksToDelete.count > 0 ||
-                notebooksToUpdate.count > 0 ||
-                notesToCreate.count > 0 ||
-                notesToDelete.count > 0 ||
-                notesToUpdate.count > 0
+        return notebooksChanges.hasChanges || notesChanges.hasChanges
     }
 
     var changes: ChangesEnvelope {
-        let changes = ChangesEnvelope(notebooksToCreate: notebooksToCreate.values.array,
-                notebooksToDelete: notebooksToDelete.values.array,
-                notebooksToUpdate: notebooksToUpdate.values.array,
-                notesToCreate: notesToCreate.values.array,
-                notesToDelete: notesToDelete.values.array,
-                notesToUpdate: notesToUpdate.values.array
-        )
-        return changes
+        return ChangesEnvelope(notebooksChanges: notebooksChanges, notesChanges: notesChanges)
     }
 
     func removeChanges(changes: ChangesEnvelope) {
 
-        for notebook in changes.notebooksToCreate {
-            notebooksToCreate[notebook.identifier] = nil
+        for (_, notebook) in changes.notebooksChanges.toSave {
+            notebooksChanges.toSave[notebook.identifier] = nil
         }
 
-        for notebook in changes.notebooksToDelete {
-            notebooksToDelete[notebook.identifier] = nil
+        for (_, notebook) in changes.notebooksChanges.toDelete {
+            notebooksChanges.toDelete[notebook.identifier] = nil
         }
 
-        for notebook in changes.notebooksToUpdate {
-            notebooksToUpdate[notebook.identifier] = nil
+        for (_, note) in changes.notesChanges.toSave {
+            notesChanges.toSave[note.identifier] = nil
         }
 
-        for note in changes.notesToCreate {
-            notesToCreate[note.identifier] = nil
-        }
-
-        for note in changes.notesToDelete {
-            notesToDelete[note.identifier] = nil
-        }
-
-        for note in changes.notesToUpdate {
-            notesToUpdate[note.identifier] = nil
+        for (_, note) in changes.notesChanges.toDelete {
+            notesChanges.toDelete[note.identifier] = nil
         }
     }
 
     func clear() {
         notebooksByIdentifier = [String: Notebook]()
         notesByIdentifier = [String: Note]()
-        notebooksToCreate = [String: Notebook]()
-        notebooksToDelete = [String: Notebook]()
-        notebooksToUpdate = [String: Notebook]()
-        notesToCreate = [String: Note]()
-        notesToDelete = [String: Note]()
-        notesToUpdate = [String: Note]()
+        notebooksChanges = Changes<Notebook>()
+        notesChanges = Changes<Note>()
         save()
         changed()
     }

@@ -91,39 +91,27 @@ class ParseStorage: Storage {
         var objectsToSave = [PFObject]()
         var objectsToDelete = [PFObject]()
 
-        for i in changes.notebooksToCreate {
+        for (_, i) in changes.notebooksChanges.toSave {
             if let object = packNotebook(i) {
                 objectsToSave.append(object)
             }
         }
 
-        for i in changes.notebooksToDelete {
+        for (_, i) in changes.notebooksChanges.toDelete {
             if let object = packNotebook(i) {
                 objectsToDelete.append(object)
             }
         }
 
-        for i in changes.notebooksToUpdate {
-            if let object = packNotebook(i) {
-                objectsToSave.append(object)
-            }
-        }
-
-        for i in changes.notesToCreate {
+        for (_, i) in changes.notesChanges.toSave {
             if let object = packNote(i) {
                 objectsToSave.append(object)
             }
         }
 
-        for i in changes.notesToDelete {
+        for (_, i) in changes.notesChanges.toDelete {
             if let object = packNote(i) {
                 objectsToDelete.append(object)
-            }
-        }
-
-        for i in changes.notesToUpdate {
-            if let object = packNote(i) {
-                objectsToSave.append(object)
             }
         }
 

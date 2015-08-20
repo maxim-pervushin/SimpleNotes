@@ -27,6 +27,7 @@
 		73BC6F59BBF9B4322932662E /* ChangesEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC667A737BF0683E1FC598 /* ChangesEnvelope.swift */; };
 		73BC6F9D1DD8B33D9BF58A81 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */; };
 		73BC6FAE58C6CC0E5A9E6034 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC64E058CF348F17D54699 /* Cache.swift */; };
+		73BC6FE1F5634658C4917987 /* Changes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC61AE012C69B34AA8D50A /* Changes.swift */; };
 		C5B45FE11B74B82F00C8E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FDF1B74B82F00C8E84B /* Main.storyboard */; };
 		C5B45FE31B74B82F00C8E84B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FE21B74B82F00C8E84B /* Images.xcassets */; };
 		C5B45FE61B74B82F00C8E84B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FE41B74B82F00C8E84B /* LaunchScreen.xib */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73BC61AE012C69B34AA8D50A /* Changes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Changes.swift; sourceTree = "<group>"; };
 		73BC620E63E274BF6CBC111E /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		73BC632884DE0D96A3DC4916 /* ParseStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseStorage.swift; sourceTree = "<group>"; };
 		73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				73BC6BF5B609ED3D4E7A0DA2 /* Notebook.swift */,
 				73BC667A868D3D25999CDC8E /* Note.swift */,
 				73BC647134DDE31544BBB0D1 /* DataEnvelope.swift */,
+				73BC61AE012C69B34AA8D50A /* Changes.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				73BC61C68AF2D3D82E1793BD /* PlistCache.swift in Sources */,
 				73BC6F9D1DD8B33D9BF58A81 /* ParseHelper.swift in Sources */,
 				73BC6C80482FD943AD045781 /* RootNavigationController.swift in Sources */,
+				73BC6FE1F5634658C4917987 /* Changes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
