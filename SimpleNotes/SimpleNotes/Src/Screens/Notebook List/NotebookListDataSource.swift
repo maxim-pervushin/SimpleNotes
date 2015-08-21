@@ -13,16 +13,16 @@ class NotebookListDataSource {
         }
     }
 
-    func createNotebookWithName(name: String) -> Bool {
-        return DataManager.shared.createNotebook(Notebook(identifier: NSUUID().UUIDString, name: name))
+    func saveNotebookWithName(name: String) -> Bool {
+        return DataManager.shared.saveNotebook(Notebook(identifier: NSUUID().UUIDString, name: name))
+    }
+
+    func saveNotebook(notebook: Notebook) -> Bool {
+        return DataManager.shared.saveNotebook(notebook)
     }
 
     func deleteNotebook(notebook: Notebook) -> Bool {
         return DataManager.shared.deleteNotebook(notebook)
-    }
-
-    func updateNotebook(notebook: Notebook) -> Bool {
-        return DataManager.shared.updateNotebook(notebook)
     }
 
     var notebooksCount: Int {

@@ -19,16 +19,12 @@ class NoteListDataSource {
         }
     }
 
-    func createNote(note: Note) -> Bool {
-        return DataManager.shared.createNote(note)
+    func saveNote(note: Note) -> Bool {
+        return DataManager.shared.saveNote(note)
     }
 
     func deleteNote(note: Note) -> Bool {
         return DataManager.shared.deleteNote(note)
-    }
-
-    func updateNote(note: Note) -> Bool {
-        return DataManager.shared.updateNote(note)
     }
 
     var notes: [Note] {

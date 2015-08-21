@@ -102,32 +102,24 @@ class DataManager: CacheDelegate {
 
 extension DataManager {
 
-    func createNotebook(notebook: Notebook) -> Bool {
-        return cacheProvider.createNotebook(notebook)
+    func saveNotebook(notebook: Notebook) -> Bool {
+        return cacheProvider.saveNotebook(notebook)
     }
 
     func deleteNotebook(notebook: Notebook) -> Bool {
         return cacheProvider.deleteNotebook(notebook)
     }
 
-    func updateNotebook(notebook: Notebook) -> Bool {
-        return cacheProvider.updateNotebook(notebook)
-    }
-
     var notebooks: [Notebook] {
         return cacheProvider.notebooks
     }
 
-    func createNote(note: Note) -> Bool {
-        return cacheProvider.createNote(note)
+    func saveNote(note: Note) -> Bool {
+        return cacheProvider.saveNote(note)
     }
 
     func deleteNote(note: Note) -> Bool {
         return cacheProvider.deleteNote(note)
-    }
-
-    func updateNote(note: Note) -> Bool {
-        return cacheProvider.updateNote(note)
     }
 
     var notes: [Note] {

@@ -30,9 +30,10 @@ class MemoryCache: Cache {
         }
     }
 
-    func createNotebook(notebook: Notebook) -> Bool {
+    func saveNotebook(notebook: Notebook) -> Bool {
         notebooksByIdentifier[notebook.identifier] = notebook
         notebooksChanges.toSave[notebook.identifier] = notebook
+        notebooksChanges.toDelete[notebook.identifier] = nil
         changed()
         return true
     }
@@ -41,21 +42,12 @@ class MemoryCache: Cache {
         if let _ = notebooksByIdentifier[notebook.identifier] {
             notebooksByIdentifier[notebook.identifier] = nil
             notebooksChanges.toDelete[notebook.identifier] = notebook
+            notebooksChanges.toSave[notebook.identifier] = nil
             for note in notes {
                 if note.notebookIdentifier == notebook.identifier {
-                    notesChanges.toSave[note.identifier] = note
+                    deleteNote(note)
                 }
             }
-            changed()
-            return true
-        }
-        return false
-    }
-
-    func updateNotebook(notebook: Notebook) -> Bool {
-        if let _ = notebooksByIdentifier[notebook.identifier] {
-            notebooksByIdentifier[notebook.identifier] = notebook
-            notebooksChanges.toSave[notebook.identifier] = notebook
             changed()
             return true
         }
@@ -84,27 +76,19 @@ class MemoryCache: Cache {
         }
     }
 
-    func createNote(note: Note) -> Bool {
+    func saveNote(note: Note) -> Bool {
         notesByIdentifier[note.identifier] = note
         notesChanges.toSave[note.identifier] = note
+        notesChanges.toDelete[note.identifier] = nil
         changed()
         return true
     }
 
     func deleteNote(note: Note) -> Bool {
-        if let existingNote = notesByIdentifier[note.identifier] {
+        if let _ = notesByIdentifier[note.identifier] {
             notesByIdentifier[note.identifier] = nil
             notesChanges.toDelete[note.identifier] = note
-            changed()
-            return true
-        }
-        return false
-    }
-
-    func updateNote(note: Note) -> Bool {
-        if let existingNote = notesByIdentifier[note.identifier] {
-            notesByIdentifier[note.identifier] = note
-            notesChanges.toSave[note.identifier] = note
+            notesChanges.toSave[note.identifier] = nil
             changed()
             return true
         }

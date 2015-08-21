@@ -40,7 +40,7 @@ class NotebookListViewController: UITableViewController, UITableViewDataSource {
         alertController.addAction(UIAlertAction(title: "Create", style: .Default, handler: {
             (action) in
             if let textField = alertController.textFields?[0] as? UITextField {
-                self.dataSource.createNotebookWithName(textField.text)
+                self.dataSource.saveNotebookWithName(textField.text)
             }
         }))
         presentViewController(alertController, animated: true, completion: nil)
@@ -100,7 +100,7 @@ class NotebookListViewController: UITableViewController, UITableViewDataSource {
         alertController.addAction(UIAlertAction(title: "Rename", style: .Default, handler: {
             (action) in
             if let textField = alertController.textFields?[0] as? UITextField {
-                self.dataSource.updateNotebook(Notebook(identifier: notebook.identifier, name: textField.text))
+                self.dataSource.saveNotebook(Notebook(identifier: notebook.identifier, name: textField.text))
             }
         }))
         presentViewController(alertController, animated: true, completion: nil)

@@ -13,19 +13,15 @@ protocol Cache {
 
     var delegate: CacheDelegate? { get set }
 
-    func createNotebook(notebook: Notebook) -> Bool
+    func saveNotebook(notebook: Notebook) -> Bool
 
     func deleteNotebook(notebook: Notebook) -> Bool
 
-    func updateNotebook(notebook: Notebook) -> Bool
-
     var notebooks: [Notebook] { get set }
 
-    func createNote(note: Note) -> Bool
+    func saveNote(note: Note) -> Bool
 
     func deleteNote(note: Note) -> Bool
-
-    func updateNote(note: Note) -> Bool
 
     var notes: [Note] { get set }
 

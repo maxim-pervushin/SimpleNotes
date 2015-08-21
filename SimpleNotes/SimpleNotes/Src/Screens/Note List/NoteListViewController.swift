@@ -79,11 +79,11 @@ class NoteListViewController: UITableViewController, NoteViewControllerDelegate 
 
     func noteViewController(noteViewController: NoteViewController, createdNote note: Note) {
         let newNote = Note(identifier: NSUUID().UUIDString, text: note.text, notebookIdentifier: notebook?.identifier)
-        dataSource.createNote(newNote)
+        dataSource.saveNote(newNote)
     }
 
     func noteViewController(noteViewController: NoteViewController, updatedNote note: Note) {
-        dataSource.updateNote(note)
+        dataSource.saveNote(note)
     }
 
     func noteViewController(noteViewController: NoteViewController, deletedNote note: Note) {
