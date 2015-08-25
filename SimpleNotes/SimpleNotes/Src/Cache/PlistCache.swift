@@ -53,12 +53,13 @@ class PlistCache: Cache {
         return nil
     }
 
-    private var documentsDirectory: NSString {
-        return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! NSString
-    }
-
     private var contentFilePath: String {
-        return documentsDirectory.stringByAppendingPathComponent("/cache.plist")
+        if let
+        groupURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.SimpleNotes"),
+        path = groupURL.URLByAppendingPathComponent("/cache.plist").path {
+            return path
+        }
+        return ""
     }
 
     private func save() {

@@ -30,6 +30,40 @@
 		73BC6F9D1DD8B33D9BF58A81 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */; };
 		73BC6FAE58C6CC0E5A9E6034 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC64E058CF348F17D54699 /* Cache.swift */; };
 		73BC6FE1F5634658C4917987 /* Changes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC61AE012C69B34AA8D50A /* Changes.swift */; };
+		C51732841B8C79DD009CEFA2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51732831B8C79DD009CEFA2 /* NotificationCenter.framework */; };
+		C51732891B8C79DD009CEFA2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51732881B8C79DD009CEFA2 /* TodayViewController.swift */; };
+		C517328B1B8C79DD009CEFA2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C517328A1B8C79DD009CEFA2 /* MainInterface.storyboard */; };
+		C517328E1B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C51732811B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C51732931B8C79EE009CEFA2 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29231B78ACD200E73845 /* Accounts.framework */; };
+		C51732941B8C79EE009CEFA2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29241B78ACD200E73845 /* AudioToolbox.framework */; };
+		C51732951B8C79EE009CEFA2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29251B78ACD200E73845 /* CFNetwork.framework */; };
+		C51732961B8C79EE009CEFA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29261B78ACD200E73845 /* CoreGraphics.framework */; };
+		C51732971B8C79EE009CEFA2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29271B78ACD200E73845 /* CoreLocation.framework */; };
+		C51732981B8C79EE009CEFA2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29281B78ACD200E73845 /* QuartzCore.framework */; };
+		C51732991B8C79EE009CEFA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29291B78ACD200E73845 /* Security.framework */; };
+		C517329A1B8C79EE009CEFA2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB292A1B78ACD200E73845 /* Social.framework */; };
+		C517329B1B8C79EE009CEFA2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB292B1B78ACD200E73845 /* StoreKit.framework */; };
+		C517329C1B8C79EE009CEFA2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB292C1B78ACD200E73845 /* SystemConfiguration.framework */; };
+		C517329D1B8C79F1009CEFA2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29391B78ACE300E73845 /* libsqlite3.dylib */; };
+		C517329E1B8C79F1009CEFA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29371B78ACDC00E73845 /* libz.dylib */; };
+		C517329F1B8C79FF009CEFA2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29171B78AC5200E73845 /* Bolts.framework */; };
+		C51732A01B8C79FF009CEFA2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29181B78AC5200E73845 /* Parse.framework */; };
+		C51732A11B8C79FF009CEFA2 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29191B78AC5200E73845 /* ParseCrashReporting.framework */; };
+		C51732A21B8C79FF009CEFA2 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB291A1B78AC5200E73845 /* ParseFacebookUtils.framework */; };
+		C51732A31B8C79FF009CEFA2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB291B1B78AC5200E73845 /* ParseFacebookUtilsV4.framework */; };
+		C51732A41B8C79FF009CEFA2 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB291C1B78AC5200E73845 /* ParseUI.framework */; };
+		C51732A51B8C7A07009CEFA2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6CB66D378C775B19BD89 /* DataManager.swift */; };
+		C51732A61B8C7A1B009CEFA2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC620E63E274BF6CBC111E /* Storage.swift */; };
+		C51732A71B8C7A1B009CEFA2 /* ParseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC632884DE0D96A3DC4916 /* ParseStorage.swift */; };
+		C51732A81B8C7A1B009CEFA2 /* ChangesEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC667A737BF0683E1FC598 /* ChangesEnvelope.swift */; };
+		C51732A91B8C7A1B009CEFA2 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6BF5B609ED3D4E7A0DA2 /* Notebook.swift */; };
+		C51732AA1B8C7A1B009CEFA2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC667A868D3D25999CDC8E /* Note.swift */; };
+		C51732AB1B8C7A1B009CEFA2 /* DataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC647134DDE31544BBB0D1 /* DataEnvelope.swift */; };
+		C51732AC1B8C7A1B009CEFA2 /* Changes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC61AE012C69B34AA8D50A /* Changes.swift */; };
+		C51732AD1B8C7A1B009CEFA2 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6EFCAF61DCD076C58B2C /* MemoryCache.swift */; };
+		C51732AE1B8C7A1B009CEFA2 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC64E058CF348F17D54699 /* Cache.swift */; };
+		C51732AF1B8C7A1B009CEFA2 /* PlistCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6A78D50572E1DBB96BC7 /* PlistCache.swift */; };
+		C51732B01B8C7A1B009CEFA2 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */; };
 		C5B45FE11B74B82F00C8E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FDF1B74B82F00C8E84B /* Main.storyboard */; };
 		C5B45FE31B74B82F00C8E84B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FE21B74B82F00C8E84B /* Images.xcassets */; };
 		C5B45FE61B74B82F00C8E84B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FE41B74B82F00C8E84B /* LaunchScreen.xib */; };
@@ -54,6 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C517328C1B8C79DD009CEFA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5B45FCE1B74B82F00C8E84B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C51732801B8C79DD009CEFA2;
+			remoteInfo = SimpleNotesTodayWidget;
+		};
 		C5B45FEC1B74B82F00C8E84B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5B45FCE1B74B82F00C8E84B /* Project object */;
@@ -62,6 +103,20 @@
 			remoteInfo = SimpleNotes;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C51732921B8C79DD009CEFA2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C517328E1B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		73BC60284D131A991FB59BDC /* EditNoteValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteValidator.swift; sourceTree = "<group>"; };
@@ -87,6 +142,13 @@
 		73BC6F530A3E77DE6ECD7B61 /* NotebookListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookListDataSource.swift; sourceTree = "<group>"; };
 		73BC6F564A98F76D526C0740 /* EditNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		73BC6FE93EBBFA7D4B985346 /* NotebookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookCell.swift; sourceTree = "<group>"; };
+		C51732811B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimpleNotesTodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51732831B8C79DD009CEFA2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		C51732871B8C79DD009CEFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C51732881B8C79DD009CEFA2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		C517328A1B8C79DD009CEFA2 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		C51732B11B8C7CBA009CEFA2 /* SimpleNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleNotes.entitlements; sourceTree = "<group>"; };
+		C51732B21B8C7CCC009CEFA2 /* SimpleNotesTodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleNotesTodayWidget.entitlements; sourceTree = "<group>"; };
 		C5B45FD61B74B82F00C8E84B /* SimpleNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B45FDA1B74B82F00C8E84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5B45FE01B74B82F00C8E84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +178,32 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C517327E1B8C79DD009CEFA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51732971B8C79EE009CEFA2 /* CoreLocation.framework in Frameworks */,
+				C51732931B8C79EE009CEFA2 /* Accounts.framework in Frameworks */,
+				C51732981B8C79EE009CEFA2 /* QuartzCore.framework in Frameworks */,
+				C51732841B8C79DD009CEFA2 /* NotificationCenter.framework in Frameworks */,
+				C51732A01B8C79FF009CEFA2 /* Parse.framework in Frameworks */,
+				C51732A21B8C79FF009CEFA2 /* ParseFacebookUtils.framework in Frameworks */,
+				C517329E1B8C79F1009CEFA2 /* libz.dylib in Frameworks */,
+				C51732951B8C79EE009CEFA2 /* CFNetwork.framework in Frameworks */,
+				C51732961B8C79EE009CEFA2 /* CoreGraphics.framework in Frameworks */,
+				C517329C1B8C79EE009CEFA2 /* SystemConfiguration.framework in Frameworks */,
+				C51732A41B8C79FF009CEFA2 /* ParseUI.framework in Frameworks */,
+				C517329A1B8C79EE009CEFA2 /* Social.framework in Frameworks */,
+				C517329B1B8C79EE009CEFA2 /* StoreKit.framework in Frameworks */,
+				C51732991B8C79EE009CEFA2 /* Security.framework in Frameworks */,
+				C517329D1B8C79F1009CEFA2 /* libsqlite3.dylib in Frameworks */,
+				C51732A31B8C79FF009CEFA2 /* ParseFacebookUtilsV4.framework in Frameworks */,
+				C51732941B8C79EE009CEFA2 /* AudioToolbox.framework in Frameworks */,
+				C517329F1B8C79FF009CEFA2 /* Bolts.framework in Frameworks */,
+				C51732A11B8C79FF009CEFA2 /* ParseCrashReporting.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5B45FD31B74B82F00C8E84B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,12 +361,41 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C51732821B8C79DD009CEFA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C51732831B8C79DD009CEFA2 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C51732851B8C79DD009CEFA2 /* SimpleNotesTodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				C51732B21B8C7CCC009CEFA2 /* SimpleNotesTodayWidget.entitlements */,
+				C51732881B8C79DD009CEFA2 /* TodayViewController.swift */,
+				C517328A1B8C79DD009CEFA2 /* MainInterface.storyboard */,
+				C51732861B8C79DD009CEFA2 /* Supporting Files */,
+			);
+			path = SimpleNotesTodayWidget;
+			sourceTree = "<group>";
+		};
+		C51732861B8C79DD009CEFA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C51732871B8C79DD009CEFA2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C5B45FCD1B74B82F00C8E84B = {
 			isa = PBXGroup;
 			children = (
 				C5DB293B1B78ACF100E73845 /* Libs */,
 				C5B45FD81B74B82F00C8E84B /* SimpleNotes */,
 				C5B45FEE1B74B82F00C8E84B /* SimpleNotesTests */,
+				C51732851B8C79DD009CEFA2 /* SimpleNotesTodayWidget */,
+				C51732821B8C79DD009CEFA2 /* Frameworks */,
 				C5B45FD71B74B82F00C8E84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -288,6 +405,7 @@
 			children = (
 				C5B45FD61B74B82F00C8E84B /* SimpleNotes.app */,
 				C5B45FEB1B74B82F00C8E84B /* SimpleNotesTests.xctest */,
+				C51732811B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,6 +413,7 @@
 		C5B45FD81B74B82F00C8E84B /* SimpleNotes */ = {
 			isa = PBXGroup;
 			children = (
+				C51732B11B8C7CBA009CEFA2 /* SimpleNotes.entitlements */,
 				C5B45FDF1B74B82F00C8E84B /* Main.storyboard */,
 				C5B45FE21B74B82F00C8E84B /* Images.xcassets */,
 				C5B45FE41B74B82F00C8E84B /* LaunchScreen.xib */,
@@ -352,6 +471,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C51732801B8C79DD009CEFA2 /* SimpleNotesTodayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C51732911B8C79DD009CEFA2 /* Build configuration list for PBXNativeTarget "SimpleNotesTodayWidget" */;
+			buildPhases = (
+				C517327D1B8C79DD009CEFA2 /* Sources */,
+				C517327E1B8C79DD009CEFA2 /* Frameworks */,
+				C517327F1B8C79DD009CEFA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleNotesTodayWidget;
+			productName = SimpleNotesTodayWidget;
+			productReference = C51732811B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C5B45FD51B74B82F00C8E84B /* SimpleNotes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5B45FF51B74B82F00C8E84B /* Build configuration list for PBXNativeTarget "SimpleNotes" */;
@@ -359,10 +495,12 @@
 				C5B45FD21B74B82F00C8E84B /* Sources */,
 				C5B45FD31B74B82F00C8E84B /* Frameworks */,
 				C5B45FD41B74B82F00C8E84B /* Resources */,
+				C51732921B8C79DD009CEFA2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C517328D1B8C79DD009CEFA2 /* PBXTargetDependency */,
 			);
 			name = SimpleNotes;
 			productName = SimpleNotes;
@@ -396,8 +534,23 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Maxim Pervushin";
 				TargetAttributes = {
+					C51732801B8C79DD009CEFA2 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = FRM2L78456;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C5B45FD51B74B82F00C8E84B = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = FRM2L78456;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C5B45FEA1B74B82F00C8E84B = {
 						CreatedOnToolsVersion = 6.4;
@@ -420,11 +573,20 @@
 			targets = (
 				C5B45FD51B74B82F00C8E84B /* SimpleNotes */,
 				C5B45FEA1B74B82F00C8E84B /* SimpleNotesTests */,
+				C51732801B8C79DD009CEFA2 /* SimpleNotesTodayWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C517327F1B8C79DD009CEFA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C517328B1B8C79DD009CEFA2 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5B45FD41B74B82F00C8E84B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,6 +607,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C517327D1B8C79DD009CEFA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51732891B8C79DD009CEFA2 /* TodayViewController.swift in Sources */,
+				C51732AD1B8C7A1B009CEFA2 /* MemoryCache.swift in Sources */,
+				C51732A71B8C7A1B009CEFA2 /* ParseStorage.swift in Sources */,
+				C51732AC1B8C7A1B009CEFA2 /* Changes.swift in Sources */,
+				C51732AE1B8C7A1B009CEFA2 /* Cache.swift in Sources */,
+				C51732AA1B8C7A1B009CEFA2 /* Note.swift in Sources */,
+				C51732A81B8C7A1B009CEFA2 /* ChangesEnvelope.swift in Sources */,
+				C51732AF1B8C7A1B009CEFA2 /* PlistCache.swift in Sources */,
+				C51732A51B8C7A07009CEFA2 /* DataManager.swift in Sources */,
+				C51732AB1B8C7A1B009CEFA2 /* DataEnvelope.swift in Sources */,
+				C51732A91B8C7A1B009CEFA2 /* Notebook.swift in Sources */,
+				C51732B01B8C7A1B009CEFA2 /* ParseHelper.swift in Sources */,
+				C51732A61B8C7A1B009CEFA2 /* Storage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5B45FD21B74B82F00C8E84B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,6 +668,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C517328D1B8C79DD009CEFA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C51732801B8C79DD009CEFA2 /* SimpleNotesTodayWidget */;
+			targetProxy = C517328C1B8C79DD009CEFA2 /* PBXContainerItemProxy */;
+		};
 		C5B45FED1B74B82F00C8E84B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C5B45FD51B74B82F00C8E84B /* SimpleNotes */;
@@ -513,6 +700,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C517328F1B8C79DD009CEFA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SimpleNotesTodayWidget/SimpleNotesTodayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleNotes/Vendor/Parse",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SimpleNotesTodayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C51732901B8C79DD009CEFA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SimpleNotesTodayWidget/SimpleNotesTodayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleNotes/Vendor/Parse",
+				);
+				INFOPLIST_FILE = SimpleNotesTodayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C5B45FF31B74B82F00C8E84B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -600,6 +827,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleNotes/SimpleNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SimpleNotes/Vendor/Parse",
@@ -607,6 +837,7 @@
 				INFOPLIST_FILE = SimpleNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -614,6 +845,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleNotes/SimpleNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SimpleNotes/Vendor/Parse",
@@ -621,6 +855,7 @@
 				INFOPLIST_FILE = SimpleNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -661,6 +896,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C51732911B8C79DD009CEFA2 /* Build configuration list for PBXNativeTarget "SimpleNotesTodayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C517328F1B8C79DD009CEFA2 /* Debug */,
+				C51732901B8C79DD009CEFA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C5B45FD11B74B82F00C8E84B /* Build configuration list for PBXProject "SimpleNotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

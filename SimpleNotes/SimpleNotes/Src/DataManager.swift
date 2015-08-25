@@ -126,6 +126,10 @@ extension DataManager {
         return cacheProvider.notes
     }
 
+    var favoriteNotes: [Note] {
+        return cacheProvider.favoriteNotes
+    }
+
     func clearCache() {
         cacheProvider.clear()
     }
