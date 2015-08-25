@@ -9,10 +9,12 @@ struct Note: Equatable {
 
     let identifier: String
     let text: String
+    let isFavorite: Bool
     let notebookIdentifier: String?
 
-    init(identifier: String, text: String, notebookIdentifier: String? = nil) {
+    init(identifier: String, text: String, isFavorite: Bool, notebookIdentifier: String? = nil) {
         self.identifier = identifier
+        self.isFavorite = isFavorite
         self.text = text
         self.notebookIdentifier = notebookIdentifier
     }
@@ -21,5 +23,6 @@ struct Note: Equatable {
 func ==(lhs: Note, rhs: Note) -> Bool {
     return lhs.identifier == rhs.identifier
             && lhs.text == rhs.text
+            && lhs.isFavorite == rhs.isFavorite
             && lhs.notebookIdentifier == rhs.notebookIdentifier
 }

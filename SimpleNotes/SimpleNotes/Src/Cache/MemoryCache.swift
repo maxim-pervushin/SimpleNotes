@@ -117,6 +117,16 @@ class MemoryCache: Cache {
         }
     }
 
+    var favoriteNotes: [Note] {
+        var result = [Note]()
+        for (_, note) in notesByIdentifier {
+            if note.isFavorite {
+                result.append(note)
+            }
+        }
+        return result
+    }
+
     var hasChanges: Bool {
         return notebooksChanges.hasChanges || notesChanges.hasChanges
     }

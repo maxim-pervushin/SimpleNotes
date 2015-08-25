@@ -43,8 +43,11 @@ class ParseStorage: Storage {
             }
             object["identifier"] = note.identifier
             object["text"] = note.text
+            object["isFavorite"] = note.isFavorite ? "true" : "false"
             if let notebookIdentifier = note.notebookIdentifier {
                 object["notebookIdentifier"] = notebookIdentifier
+            } else {
+                object["notebookIdentifier"] = ""
             }
             object["user"] = currentUser
             return object
@@ -64,9 +67,9 @@ class ParseStorage: Storage {
     private func unpackNote(object: PFObject) -> Note? {
         if let
         identifier = object["identifier"] as? String,
-        text = object["text"] as? String {
-            var userData = [String: String]()
-            return Note(identifier: identifier, text: text, notebookIdentifier: object["notebookIdentifier"] as? String)
+        text = object["text"] as? String,
+        isFavoriteString = object["isFavorite"] as? String {
+            return Note(identifier: identifier, text: text, isFavorite: isFavoriteString == "true" ? true : false, notebookIdentifier: object["notebookIdentifier"] as? String)
         }
         return nil
     }

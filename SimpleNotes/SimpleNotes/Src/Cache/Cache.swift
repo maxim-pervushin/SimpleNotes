@@ -25,6 +25,8 @@ protocol Cache {
 
     var notes: [Note] { get set }
 
+    var favoriteNotes: [Note] { get }
+
     var hasChanges: Bool { get }
 
     var changes: ChangesEnvelope { get }

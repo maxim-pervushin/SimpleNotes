@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ia0-GK-fZ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ia0-GK-fZ7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="2135" y="891"/>
         </scene>
-        <!--Note View Controller-->
+        <!--Edit Note View Controller-->
         <scene sceneID="aiz-CV-RVG">
             <objects>
-                <viewController id="Rc0-Bz-63n" customClass="NoteViewController" customModule="SimpleNotes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rc0-Bz-63n" customClass="EditNoteViewController" customModule="SimpleNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gwo-8e-bsc"/>
                         <viewControllerLayoutGuide type="bottom" id="rms-fA-tmg"/>
@@ -134,8 +134,16 @@
                             <constraint firstItem="BRq-3q-j36" firstAttribute="leading" secondItem="d74-5I-TCP" secondAttribute="leadingMargin" constant="-16" id="D0y-MW-ta8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mT9-tn-3Hc">
+                        <barButtonItem key="rightBarButtonItem" image="StarEmpty" id="clC-i2-X66">
+                            <connections>
+                                <action selector="toggleFavoriteButtonAction:" destination="Rc0-Bz-63n" id="MMB-0n-DwQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textView" destination="BRq-3q-j36" id="EBa-0z-7Vr"/>
+                        <outlet property="toggleFavoriteButton" destination="clC-i2-X66" id="llu-sq-8us"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHq-ys-CFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +168,9 @@
             <point key="canvasLocation" x="527" y="891"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="StarEmpty" width="22" height="22"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wKq-Mv-Nnp"/>
     </inferredMetricsTieBreakers>

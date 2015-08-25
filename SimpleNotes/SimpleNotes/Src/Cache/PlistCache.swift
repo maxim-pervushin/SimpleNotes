@@ -26,6 +26,7 @@ class PlistCache: Cache {
         var result = [
                 "identifier": note.identifier,
                 "text": note.text,
+                "isFavorite": note.isFavorite ? "true" : "false"
         ]
         if let notebookIdentifier = note.notebookIdentifier {
             result["notebookIdentifier"] = notebookIdentifier
@@ -45,8 +46,9 @@ class PlistCache: Cache {
     private func unpackNote(object: [String:String]) -> Note? {
         if let
         identifier = object["identifier"],
-        text = object["text"] {
-            return Note(identifier: identifier, text: text, notebookIdentifier: object["notebookIdentifier"])
+        text = object["text"],
+        isFavoriteString = object["isFavorite"] {
+            return Note(identifier: identifier, text: text, isFavorite: isFavoriteString == "true" ? true : false , notebookIdentifier: object["notebookIdentifier"])
         }
         return nil
     }
@@ -188,6 +190,8 @@ class PlistCache: Cache {
 
     init() {
         load()
+        // TODO: Remove later
+        println("Favorites: \(favoriteNotes)")
     }
 
     // MARK: - Cache
@@ -286,6 +290,16 @@ class PlistCache: Cache {
             notesByIdentifier = newNotesByIdentifier
             changed()
         }
+    }
+
+    var favoriteNotes: [Note] {
+        var result = [Note]()
+        for (_, note) in notesByIdentifier {
+            if note.isFavorite {
+                result.append(note)
+            }
+        }
+        return result
     }
 
     var hasChanges: Bool {

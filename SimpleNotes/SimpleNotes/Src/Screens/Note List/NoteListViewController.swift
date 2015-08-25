@@ -5,7 +5,7 @@
 
 import UIKit
 
-class NoteListViewController: UITableViewController, NoteViewControllerDelegate {
+class NoteListViewController: UITableViewController {
 
     var notebook: Notebook? {
         didSet {
@@ -26,8 +26,8 @@ class NoteListViewController: UITableViewController, NoteViewControllerDelegate 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let
-        noteViewController = segue.destinationViewController as? NoteViewController {
-            noteViewController.delegate = self
+        noteViewController = segue.destinationViewController as? EditNoteViewController {
+            noteViewController.notebook = notebook
             if let indexPath = tableView.indexPathForSelectedRow() {
                 noteViewController.note = dataSource.notes[indexPath.row]
             }
@@ -73,20 +73,5 @@ class NoteListViewController: UITableViewController, NoteViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.changed = dataSourceChanged
-    }
-
-    // MARK: - NoteViewControllerDelegate
-
-    func noteViewController(noteViewController: NoteViewController, createdNote note: Note) {
-        let newNote = Note(identifier: NSUUID().UUIDString, text: note.text, notebookIdentifier: notebook?.identifier)
-        dataSource.saveNote(newNote)
-    }
-
-    func noteViewController(noteViewController: NoteViewController, updatedNote note: Note) {
-        dataSource.saveNote(note)
-    }
-
-    func noteViewController(noteViewController: NoteViewController, deletedNote note: Note) {
-        dataSource.deleteNote(note)
     }
 }
