@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73BC603542EAD8AE1F559521 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC627F2F26217B23DF7BC6 /* TodayViewController.swift */; };
 		73BC60C44A8F4686AFB66617 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6CB66D378C775B19BD89 /* DataManager.swift */; };
 		73BC61961B71FE37208F027D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC620E63E274BF6CBC111E /* Storage.swift */; };
 		73BC61C68AF2D3D82E1793BD /* PlistCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6A78D50572E1DBB96BC7 /* PlistCache.swift */; };
@@ -24,14 +25,14 @@
 		73BC6B6C31E0DC8A4BB820B0 /* NotebookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6F530A3E77DE6ECD7B61 /* NotebookListDataSource.swift */; };
 		73BC6B8632547279F366F93F /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6BF5B609ED3D4E7A0DA2 /* Notebook.swift */; };
 		73BC6C80482FD943AD045781 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC669E87C3982C7F9B72F3 /* RootNavigationController.swift */; };
+		73BC6D34AD0BBAE9BA6D5DA1 /* TodayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC691E9BF6AC9B1BB65661 /* TodayDataSource.swift */; };
+		73BC6E3B0DE037D82846B589 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC606A552A39A44C7C87D5 /* NoteCell.swift */; };
 		73BC6E4F812A06B53F266A5B /* EditNoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC629415861BBBDC54582C /* EditNoteDataSource.swift */; };
-		73BC6F48543CA907B9688CFC /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6E31DA407DB22FDFE028 /* NoteCell.swift */; };
 		73BC6F59BBF9B4322932662E /* ChangesEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC667A737BF0683E1FC598 /* ChangesEnvelope.swift */; };
 		73BC6F9D1DD8B33D9BF58A81 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */; };
 		73BC6FAE58C6CC0E5A9E6034 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC64E058CF348F17D54699 /* Cache.swift */; };
 		73BC6FE1F5634658C4917987 /* Changes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC61AE012C69B34AA8D50A /* Changes.swift */; };
 		C51732841B8C79DD009CEFA2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51732831B8C79DD009CEFA2 /* NotificationCenter.framework */; };
-		C51732891B8C79DD009CEFA2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51732881B8C79DD009CEFA2 /* TodayViewController.swift */; };
 		C517328B1B8C79DD009CEFA2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C517328A1B8C79DD009CEFA2 /* MainInterface.storyboard */; };
 		C517328E1B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C51732811B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C51732931B8C79EE009CEFA2 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DB29231B78ACD200E73845 /* Accounts.framework */; };
@@ -64,6 +65,7 @@
 		C51732AE1B8C7A1B009CEFA2 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC64E058CF348F17D54699 /* Cache.swift */; };
 		C51732AF1B8C7A1B009CEFA2 /* PlistCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6A78D50572E1DBB96BC7 /* PlistCache.swift */; };
 		C51732B01B8C7A1B009CEFA2 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */; };
+		C59FB70B1B8F3B1700C4AB2E /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BC6E31DA407DB22FDFE028 /* NoteCell.swift */; };
 		C5B45FE11B74B82F00C8E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FDF1B74B82F00C8E84B /* Main.storyboard */; };
 		C5B45FE31B74B82F00C8E84B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FE21B74B82F00C8E84B /* Images.xcassets */; };
 		C5B45FE61B74B82F00C8E84B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5B45FE41B74B82F00C8E84B /* LaunchScreen.xib */; };
@@ -120,8 +122,10 @@
 
 /* Begin PBXFileReference section */
 		73BC60284D131A991FB59BDC /* EditNoteValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteValidator.swift; sourceTree = "<group>"; };
+		73BC606A552A39A44C7C87D5 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		73BC61AE012C69B34AA8D50A /* Changes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Changes.swift; sourceTree = "<group>"; };
 		73BC620E63E274BF6CBC111E /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		73BC627F2F26217B23DF7BC6 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		73BC629415861BBBDC54582C /* EditNoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteDataSource.swift; sourceTree = "<group>"; };
 		73BC632884DE0D96A3DC4916 /* ParseStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseStorage.swift; sourceTree = "<group>"; };
 		73BC63CEE2DAAEA90EC8C76D /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 		73BC667A868D3D25999CDC8E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		73BC669E87C3982C7F9B72F3 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		73BC687C89C5C7400B714297 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		73BC691E9BF6AC9B1BB65661 /* TodayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayDataSource.swift; sourceTree = "<group>"; };
 		73BC6A78D50572E1DBB96BC7 /* PlistCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistCache.swift; sourceTree = "<group>"; };
 		73BC6BF5B609ED3D4E7A0DA2 /* Notebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
 		73BC6CB66D378C775B19BD89 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -145,7 +150,6 @@
 		C51732811B8C79DD009CEFA2 /* SimpleNotesTodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimpleNotesTodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51732831B8C79DD009CEFA2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C51732871B8C79DD009CEFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C51732881B8C79DD009CEFA2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C517328A1B8C79DD009CEFA2 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		C51732B11B8C7CBA009CEFA2 /* SimpleNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleNotes.entitlements; sourceTree = "<group>"; };
 		C51732B21B8C7CCC009CEFA2 /* SimpleNotesTodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleNotesTodayWidget.entitlements; sourceTree = "<group>"; };
@@ -257,6 +261,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		73BC63E87B718B164BB38031 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				73BC6B220D57B9F42342F711 /* Screens */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
 		73BC6589EA7EC9A2D0F5FEF4 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +311,14 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		73BC6B220D57B9F42342F711 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				73BC6D06E582BA028B05D1DC /* Today */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		73BC6B74C296178D557843A7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +329,16 @@
 				73BC61AE012C69B34AA8D50A /* Changes.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		73BC6D06E582BA028B05D1DC /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				73BC627F2F26217B23DF7BC6 /* TodayViewController.swift */,
+				73BC606A552A39A44C7C87D5 /* NoteCell.swift */,
+				73BC691E9BF6AC9B1BB65661 /* TodayDataSource.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		73BC6D2BEE95023B97C8A8F4 /* Notebook List */ = {
@@ -373,9 +403,9 @@
 			isa = PBXGroup;
 			children = (
 				C51732B21B8C7CCC009CEFA2 /* SimpleNotesTodayWidget.entitlements */,
-				C51732881B8C79DD009CEFA2 /* TodayViewController.swift */,
 				C517328A1B8C79DD009CEFA2 /* MainInterface.storyboard */,
 				C51732861B8C79DD009CEFA2 /* Supporting Files */,
+				73BC63E87B718B164BB38031 /* Src */,
 			);
 			path = SimpleNotesTodayWidget;
 			sourceTree = "<group>";
@@ -611,12 +641,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C51732891B8C79DD009CEFA2 /* TodayViewController.swift in Sources */,
 				C51732AD1B8C7A1B009CEFA2 /* MemoryCache.swift in Sources */,
 				C51732A71B8C7A1B009CEFA2 /* ParseStorage.swift in Sources */,
 				C51732AC1B8C7A1B009CEFA2 /* Changes.swift in Sources */,
 				C51732AE1B8C7A1B009CEFA2 /* Cache.swift in Sources */,
 				C51732AA1B8C7A1B009CEFA2 /* Note.swift in Sources */,
+				C59FB70B1B8F3B1700C4AB2E /* NoteCell.swift in Sources */,
 				C51732A81B8C7A1B009CEFA2 /* ChangesEnvelope.swift in Sources */,
 				C51732AF1B8C7A1B009CEFA2 /* PlistCache.swift in Sources */,
 				C51732A51B8C7A07009CEFA2 /* DataManager.swift in Sources */,
@@ -624,6 +654,8 @@
 				C51732A91B8C7A1B009CEFA2 /* Notebook.swift in Sources */,
 				C51732B01B8C7A1B009CEFA2 /* ParseHelper.swift in Sources */,
 				C51732A61B8C7A1B009CEFA2 /* Storage.swift in Sources */,
+				73BC603542EAD8AE1F559521 /* TodayViewController.swift in Sources */,
+				73BC6D34AD0BBAE9BA6D5DA1 /* TodayDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +678,6 @@
 				73BC6FAE58C6CC0E5A9E6034 /* Cache.swift in Sources */,
 				73BC62DD0F9C1AC29854EE8A /* NotebookCell.swift in Sources */,
 				73BC6B6C31E0DC8A4BB820B0 /* NotebookListDataSource.swift in Sources */,
-				73BC6F48543CA907B9688CFC /* NoteCell.swift in Sources */,
 				73BC65F5835538BA42E866EE /* NoteListDataSource.swift in Sources */,
 				73BC61C68AF2D3D82E1793BD /* PlistCache.swift in Sources */,
 				73BC6F9D1DD8B33D9BF58A81 /* ParseHelper.swift in Sources */,
@@ -654,6 +685,7 @@
 				73BC6FE1F5634658C4917987 /* Changes.swift in Sources */,
 				73BC6646E84932442D658885 /* EditNoteValidator.swift in Sources */,
 				73BC6E4F812A06B53F266A5B /* EditNoteDataSource.swift in Sources */,
+				73BC6E3B0DE037D82846B589 /* NoteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +935,7 @@
 				C51732901B8C79DD009CEFA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C5B45FD11B74B82F00C8E84B /* Build configuration list for PBXProject "SimpleNotes" */ = {
 			isa = XCConfigurationList;
